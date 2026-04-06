@@ -1,0 +1,16 @@
+node_modules/
+dist-electron/
+out/
+release/
+.next/
+*.enc
+.DS_Store
+tsconfig.tsbuildinfo
+
+# User data (never commit)
+~/BrainDump/
+
+# Environment
+.env
+.env.local
+.env.production

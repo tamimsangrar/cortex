@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "cortex": {
+      "command": "npx",
+      "args": ["tsx", "/Users/tamimsangrar/Desktop/braindump/mcp/server.ts"],
+      "env": {
+        "CORTEX_DATA_DIR": "~/BrainDump"
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@import "@fontsource/inter/latin-300.css";
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-500.css";
+@import "@fontsource/inter/latin-600.css";
+@import "@fontsource/inter/latin-700.css";
+@import "@fontsource/inter/latin-800.css";
+
+:root {
+  --primary: #99462a;
+  --primary-container: #d97757;
+  --background: #fbf9f7;
+  --surface: #fbf9f7;
+  --surface-container: #efedec;
+  --surface-container-low: #f5f3f1;
+  --surface-container-high: #eae8e6;
+  --surface-container-highest: #e4e2e0;
+  --surface-container-lowest: #ffffff;
+  --on-surface: #1b1c1b;
+  --on-surface-variant: #55433d;
+  --outline: #88726c;
+  --outline-variant: #dbc1b9;
+  --tertiary: #006b5f;
+  --tertiary-container: #09a493;
+  --secondary: #805345;
+  --secondary-container: #ffc4b2;
+  --error: #ba1a1a;
+  --success: #006b5f;
+  --warning: #8a6e00;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-image: radial-gradient(circle, #dbc1b9 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+/* Titlebar drag region */
+.titlebar-drag {
+  -webkit-app-region: drag;
+}
+.titlebar-no-drag,
+.titlebar-no-drag * {
+  -webkit-app-region: no-drag;
+}
+
+/* Sidebar nav hover */
+.nav-item:hover {
+  background: rgba(153, 70, 42, 0.06) !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 10px;
+}
+
+/* Page transitions */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.page-transition {
+  animation: pageIn 0.25s ease both;
+}
+
+/* Wiki link styling */
+.wiki-link {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(153, 70, 42, 0.2);
+}
+.wiki-link:hover {
+  border-bottom-color: var(--primary);
+}

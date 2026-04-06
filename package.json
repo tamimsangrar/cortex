@@ -1,0 +1,81 @@
+{
+  "name": "cortex",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cortex — your digital life, compiled into a knowledge wiki",
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "concurrently -n next,electron \"next dev --port 3000\" \"wait-on http://localhost:3000 && electron .\"",
+    "build": "next build && tsup && electron-builder --mac",
+    "build:win": "next build && tsup && electron-builder --win",
+    "start": "electron .",
+    "lint": "next lint",
+    "mcp": "tsx mcp/server.ts",
+    "build:mcp": "tsx mcp/server.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0",
+    "@fontsource/inter": "^5.2.8",
+    "@mozilla/readability": "^0.6.0",
+    "adm-zip": "^0.5.17",
+    "linkedom": "^0.18.12",
+    "next": "^15.1.0",
+    "openai": "^6.33.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sql.js": "^1.14.1",
+    "turndown": "^7.2.4"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/adm-zip": "^0.5.8",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "concurrently": "^9.1.0",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^4.0.0",
+    "tsup": "^8.3.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.0",
+    "wait-on": "^8.0.0"
+  },
+  "build": {
+    "appId": "com.cortex.app",
+    "productName": "Cortex",
+    "files": [
+      "dist-electron/**/*",
+      "out/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity",
+      "icon": "public/icon.icns",
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "extendInfo": {
+        "NSAppleEventsUsageDescription": "Cortex needs access to Apple Notes to import your notes.",
+        "NSDesktopFolderUsageDescription": "Cortex needs access to read files you select for import."
+      }
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/icon.ico"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
